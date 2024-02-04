@@ -1,0 +1,41 @@
+.glitch-text {
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    text-shadow: 0 0 0 transparent;
+    /* transform: scale(1); */
+  }
+  15% {
+    text-shadow: 1px 1px 0 #f00, -1px -1px 0 #0f0;
+    /* transform: skewX(-10deg); */
+  }
+  30% {
+    text-shadow: -1px -1px 0 #00f, 1px 1px 0 #ff0;
+    /* transform: skewX(10deg); */
+  }
+  45% {
+    text-shadow: 1px -1px 0 #0ff, -1px 1px 0 #f0f;
+    /* transform: skewY(-10deg); */
+  }
+  60% {
+    text-shadow: -1px 1px 0 #f00, 1px -1px 0 #0f0;
+    /* transform: skewY(10deg); */
+  }
+  75% {
+    text-shadow: 2px 2px 0 #ff0, -2px -2px 0 #00f;
+    /* transform: rotate(5deg); */
+  }
+  90% {
+    text-shadow: -2px -2px 0 #0f0, 2px 2px 0 #f00;
+    /* transform: rotate(-5deg); */
+  }
+}
