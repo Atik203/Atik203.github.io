@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 const Footer = () => {
   return (
     <footer className="footer footer-center p-10 bg-gray-800 text-white rounded">
@@ -114,7 +114,7 @@ const Footer = () => {
       </nav>
       <aside>
         <p>
-          Copyright &copy; 2023 - All right reserved by{" "}
+          Copyright &copy; 2024 - All right reserved by{" "}
           <span className="link-hover hover:text-red-500">
             Md.Atikur Rahaman
           </span>
