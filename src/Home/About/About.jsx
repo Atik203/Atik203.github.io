@@ -1,10 +1,10 @@
+import { FaGithub, FaLinkedin, FaSchool, FaUniversity } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { FaUniversity, FaSchool, FaLinkedin, FaGithub } from "react-icons/fa";
-import { FiDownload } from "react-icons/fi";
 
 const About = () => {
   return (
@@ -34,7 +34,7 @@ const About = () => {
           <ul className="list-disc pl-6 mt-2">
             <li>
               Completed several web development projects using technologies such
-              as HTML, CSS, JavaScript, React, MongoDB, Express.js and Node.js.
+              as JavaScript, React, MongoDB, Express.js and Node.js.
             </li>
             <li>
               Developed proficiency in the MERN (MongoDB, Express.js, React,
@@ -51,7 +51,7 @@ const About = () => {
           <div className="flex items-center mt-4 gap-5">
             <div>
               <a
-                href="https://drive.google.com/uc?export=download&id=1TTRCL_RE_VAyPM-QHafumBI5YFoXKO6L"
+                href="https://drive.google.com/uc?export=download&id=1ylDoDxYxYV4RLdgFGmw-zF62X9lg8QJs"
                 rel="noreferrer"
                 download
                 className="btn bg-red-500 text-white border-none text-lg font-semibold hover:text-black hover:bg-gray-300"

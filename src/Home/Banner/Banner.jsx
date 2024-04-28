@@ -1,7 +1,7 @@
-import img from "../../../public/Untitled design.png";
-import { FiDownload } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
+import img from "../../../public/Untitled design.png";
 const Banner = () => {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center gap-5 md:gap-0 justify-around">
@@ -29,7 +29,7 @@ const Banner = () => {
         <div className="flex items-center gap-5">
           <div>
             <a
-              href="https://drive.google.com/uc?export=download&id=1TTRCL_RE_VAyPM-QHafumBI5YFoXKO6L"
+              href="https://drive.google.com/uc?export=download&id=1ylDoDxYxYV4RLdgFGmw-zF62X9lg8QJs"
               rel="noreferrer"
               download
               className="btn bg-red-500 text-white border-none text-lg font-semibold hover:text-black hover:bg-gray-300"
