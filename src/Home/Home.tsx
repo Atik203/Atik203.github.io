@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import AnimatedCursor from "../components/AnimatedCursor";
+import FloatingElements from "../components/FloatingElements";
+import ParticleBackground from "../components/ParticleBackground";
+import ScrollIndicator from "../components/ScrollIndicator";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
 import Contact from "./Contact/Contact";
@@ -30,22 +34,33 @@ const Home: React.FC = () => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="relative">
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <div>
-          <Navbar />
-          <div id="home" className="container mx-auto px-4">
-            <Banner />
-            <Skills />
-            <Service />
-            <Project />
-            <About />
-            <Contact />
+        <>
+          {/* Scroll Progress Indicator */}
+          <ScrollIndicator />
+
+          {/* Background Effects */}
+          <ParticleBackground />
+          <FloatingElements />
+          <AnimatedCursor />
+
+          {/* Main Content */}
+          <div className="relative z-20">
+            <Navbar />
+            <div id="home" className="container mx-auto px-4">
+              <Banner />
+              <Skills />
+              <Service />
+              <Project />
+              <About />
+              <Contact />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </>
       )}
     </div>
   );

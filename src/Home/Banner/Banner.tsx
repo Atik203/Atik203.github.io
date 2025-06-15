@@ -1,18 +1,63 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiAward, FiDownload } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
-import img from "../../../public/Untitled design.png";
+import img from "../../../public/banner-image.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Banner: React.FC = () => {
   const profileRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-300, 300], [30, -30]);
+  const rotateY = useTransform(x, [-300, 300], [-30, 30]);
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = profileRef.current?.getBoundingClientRect();
+      if (rect) {
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        x.set(e.clientX - centerX);
+        y.set(e.clientY - centerY);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [x, y]);
 
   useEffect(() => {
+    // Advanced GSAP animations
+    const tl = gsap.timeline();
+
+    // Text animations
+    if (textRef.current) {
+      tl.fromTo(
+        textRef.current.children,
+        {
+          y: 100,
+          opacity: 0,
+          rotationX: 90,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotationX: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "back.out(1.7)",
+        }
+      );
+    }
     // GSAP animations for profile image
     if (profileRef.current) {
       gsap.fromTo(
@@ -81,25 +126,53 @@ const Banner: React.FC = () => {
     <section className="min-h-screen flex items-center py-20">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {" "}
           {/* Content Section */}
           <motion.div
+            ref={textRef}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="space-y-8"
           >
             <motion.div variants={itemVariants} className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm">
-                <FiAward className="w-4 h-4" />
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm"
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "hsl(var(--primary) / 0.2)",
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                >
+                  <FiAward className="w-4 h-4" />
+                </motion.div>
                 2+ Years Experience
-              </div>
+              </motion.div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">
+              <motion.h1
+                className="text-4xl md:text-6xl lg:text-7xl font-bold"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 Hi, I am{" "}
-                <span className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                <motion.span
+                  className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent"
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
                   Atikur
-                </span>
-              </h1>
+                </motion.span>
+              </motion.h1>
 
               <div className="text-2xl md:text-3xl lg:text-4xl font-semibold">
                 <span className="text-muted-foreground">I'm a </span>
@@ -221,29 +294,120 @@ const Banner: React.FC = () => {
                 </Button>
               </div>
             </motion.div>
-          </motion.div>
-
+          </motion.div>{" "}
           {/* Profile Image Section */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="relative"
-          >
-            <div ref={profileRef} className="relative z-10">
+          <motion.div className="relative" style={{ perspective: 1000 }}>
+            <motion.div
+              ref={profileRef}
+              className="relative z-10"
+              style={{ rotateX, rotateY }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
               <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary via-purple-500 to-blue-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                <img
+                {/* Animated gradient background */}
+                <motion.div
+                  className="absolute -inset-6 bg-gradient-to-r from-primary via-purple-500 to-blue-500 rounded-3xl blur-2xl opacity-30"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 180, 360],
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+
+                {/* Profile Image with Advanced Effects */}
+                <motion.img
                   src={img}
                   alt="Atikur Rahaman"
-                  className="relative w-full max-w-lg mx-auto rounded-3xl shadow-2xl transform group-hover:scale-105 transition-all duration-500"
+                  className="relative w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                  whileHover={{
+                    scale: 1.1,
+                    filter: "brightness(1.1)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                  drag
+                  dragConstraints={{
+                    left: -100,
+                    right: 100,
+                    top: -100,
+                    bottom: 100,
+                  }}
+                  dragElastic={0.2}
+                />
+
+                {/* Interactive glow effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl opacity-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
+                  whileHover={{ opacity: 0.2 }}
+                  transition={{ duration: 0.3 }}
                 />
               </div>
-            </div>
+            </motion.div>
 
-            {/* Floating elements */}
-            <div className="absolute top-10 -left-10 w-20 h-20 bg-gradient-to-r from-primary to-purple-500 rounded-full opacity-20 animate-bounce"></div>
-            <div className="absolute bottom-10 -right-10 w-16 h-16 bg-gradient-to-r from-blue-500 to-primary rounded-full opacity-30 animate-pulse"></div>
+            {/* Enhanced Floating elements */}
+            <motion.div
+              className="absolute top-10 -left-10 w-20 h-20 bg-gradient-to-r from-primary to-purple-500 rounded-full opacity-20"
+              animate={{
+                y: [0, -20, 0],
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="absolute bottom-10 -right-10 w-16 h-16 bg-gradient-to-r from-blue-500 to-primary rounded-full opacity-30"
+              animate={{
+                y: [0, 15, 0],
+                x: [0, 10, 0],
+                scale: [1, 0.8, 1],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            />
+
+            {/* Code symbols floating */}
+            <motion.div
+              className="absolute top-1/4 -right-20 text-4xl text-primary/20"
+              animate={{
+                y: [0, -30, 0],
+                rotate: [0, 15, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              {"</>"}
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-1/4 -left-20 text-3xl text-purple-500/20"
+              animate={{
+                y: [0, 20, 0],
+                rotate: [0, -15, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+            >
+              {"{}"}
+            </motion.div>
           </motion.div>
         </div>
       </div>

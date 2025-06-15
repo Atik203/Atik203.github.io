@@ -286,10 +286,25 @@ const Contact: React.FC = () => {
                     onSubmit={handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
-                    <div className="space-y-4">
-                      <div className="relative">
-                        <FiUser className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
-                        <input
+                    {" "}
+                    <div className="space-y-6">
+                      {/* Email Input */}
+                      <motion.div
+                        className="relative group"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          className="absolute left-4 top-4 w-5 h-5 text-muted-foreground"
+                          whileHover={{
+                            scale: 1.2,
+                            color: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <FiUser className="w-5 h-5" />
+                        </motion.div>
+                        <motion.input
                           {...register("email", {
                             required: "Email is required",
                             pattern: {
@@ -299,54 +314,136 @@ const Contact: React.FC = () => {
                           })}
                           type="email"
                           placeholder="Your email address"
-                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground"
+                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40"
+                          whileFocus={{
+                            scale: 1.02,
+                            borderColor: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
                         />
-                      </div>
+                        <motion.div
+                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 pointer-events-none"
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.div>
 
-                      <div className="relative">
-                        <FiMessageSquare className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
-                        <input
+                      {/* Subject Input */}
+                      <motion.div
+                        className="relative group"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          className="absolute left-4 top-4 w-5 h-5 text-muted-foreground"
+                          whileHover={{
+                            scale: 1.2,
+                            color: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <FiMessageSquare className="w-5 h-5" />
+                        </motion.div>
+                        <motion.input
                           {...register("subject", {
                             required: "Subject is required",
                           })}
                           type="text"
                           placeholder="Subject"
-                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground"
+                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40"
+                          whileFocus={{
+                            scale: 1.02,
+                            borderColor: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
                         />
-                      </div>
+                        <motion.div
+                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/10 to-blue-500/10 opacity-0 pointer-events-none"
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.div>
 
-                      <div className="relative">
-                        <FiMail className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
-                        <textarea
+                      {/* Message Textarea */}
+                      <motion.div
+                        className="relative group"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          className="absolute left-4 top-4 w-5 h-5 text-muted-foreground"
+                          whileHover={{
+                            scale: 1.2,
+                            color: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <FiMail className="w-5 h-5" />
+                        </motion.div>
+                        <motion.textarea
                           {...register("message", {
                             required: "Message is required",
                           })}
                           placeholder="Your message..."
                           rows={6}
-                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none"
+                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none hover:border-primary/40"
+                          whileFocus={{
+                            scale: 1.02,
+                            borderColor: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
                         />
-                      </div>
+                        <motion.div
+                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/10 to-pink-500/10 opacity-0 pointer-events-none"
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.div>
                     </div>
-
-                    <Button
-                      type="submit"
-                      variant="premium"
-                      size="lg"
-                      disabled={isSubmitting}
-                      className="w-full group py-3"
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      {isSubmitting ? (
-                        <>
-                          <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-2" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <FiSend className="w-8 h-8 group-hover:translate-x-1 transition-transform duration-200" />
-                          Send Message
-                        </>
-                      )}
-                    </Button>
+                      <Button
+                        type="submit"
+                        variant="premium"
+                        size="lg"
+                        disabled={isSubmitting}
+                        className="w-full group py-4 relative overflow-hidden"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <motion.div
+                              className="rounded-full h-6 w-6 border-2 border-white border-t-transparent mr-3"
+                              animate={{ rotate: 360 }}
+                              transition={{
+                                duration: 1,
+                                repeat: Infinity,
+                                ease: "linear",
+                              }}
+                            />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <motion.div
+                              whileHover={{ x: 4, rotate: 15 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <FiSend className="w-6 h-6 mr-3" />
+                            </motion.div>
+                            Send Message
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12"
+                              initial={{ x: "-100%" }}
+                              whileHover={{ x: "100%" }}
+                              transition={{ duration: 0.6 }}
+                            />
+                          </>
+                        )}
+                      </Button>
+                    </motion.div>
                   </form>
                 </CardContent>
               </Card>

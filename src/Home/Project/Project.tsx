@@ -273,44 +273,135 @@ const Project: React.FC = () => {
             ref={cardsRef}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[600px]"
           >
+            {" "}
             {currentProjects.map((project) => (
               <motion.div
                 key={project.id}
                 className="project-card group"
-                whileHover={{ y: -10 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                whileHover={{
+                  y: -20,
+                  rotateY: 5,
+                  scale: 1.02,
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                  duration: 0.3,
+                }}
+                style={{ perspective: 1000 }}
               >
-                <Card className="h-full border-primary/20 hover:border-primary/40 overflow-hidden bg-card/50 backdrop-blur-sm">
+                <Card className="h-full border-primary/20 hover:border-primary/40 overflow-hidden bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 relative">
+                  {/* Animated Background Gradient */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-blue-500/5 opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+
                   {/* Project Image */}
-                  <div className="relative overflow-hidden h-56">
-                    <img
+                  <div className="relative overflow-hidden h-56 group">
+                    <motion.img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover object-center"
                       loading="lazy"
+                      whileHover={{
+                        scale: 1.15,
+                        filter: "brightness(1.1) saturate(1.2)",
+                      }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
                     />
+
+                    {/* Overlay Effects */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                    {/* Category Badge */}
-                    <div
+                    {/* Animated shine effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 opacity-0"
+                      whileHover={{
+                        opacity: 1,
+                        x: ["100%", "-100%"],
+                      }}
+                      transition={{ duration: 0.8 }}
+                    />
+
+                    {/* Category Badge with Animation */}
+                    <motion.div
                       className={`absolute top-4 left-4 ${getCategoryColor(
                         project.category
                       )} text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.2 }}
                     >
                       {project.category}
-                    </div>
+                    </motion.div>
 
-                    {/* Language Badge */}
-                    <div className="absolute top-4 right-4 flex items-center gap-2">
-                      <div
+                    {/* Language Badge with Pulse Effect */}
+                    <motion.div className="absolute top-4 right-4 flex items-center gap-2">
+                      <motion.div
                         className={`${getLanguageColor(
                           project.language
                         )} w-3 h-3 rounded-full shadow-lg`}
-                      ></div>
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
                       <div className="bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
                         {project.language}
                       </div>
-                    </div>
+                    </motion.div>
+
+                    {/* Hover Overlay with Links */}
+                    <motion.div
+                      className="absolute inset-0 flex items-center justify-center gap-4 bg-black/50 opacity-0"
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Button
+                          variant="secondary"
+                          size="icon"
+                          asChild
+                          className="bg-white/90 hover:bg-white shadow-lg"
+                        >
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View on GitHub"
+                          >
+                            <FaGithub className="w-5 h-5 text-gray-800" />
+                          </a>
+                        </Button>
+                      </motion.div>
+
+                      {project.liveUrl && (
+                        <motion.div
+                          whileHover={{ scale: 1.2, rotate: -360 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Button
+                            variant="secondary"
+                            size="icon"
+                            asChild
+                            className="bg-white/90 hover:bg-white shadow-lg"
+                          >
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="View Live Demo"
+                            >
+                              <FaExternalLinkAlt className="w-4 h-4 text-gray-800" />
+                            </a>
+                          </Button>
+                        </motion.div>
+                      )}
+                    </motion.div>
                   </div>
 
                   <CardHeader className="space-y-3">
