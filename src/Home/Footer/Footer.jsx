@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link as ScrollLink } from "react-scroll";
 const Footer = () => {
@@ -114,7 +113,7 @@ const Footer = () => {
       </nav>
       <aside>
         <p>
-          Copyright &copy; 2024 - All right reserved by{" "}
+          Copyright &copy; 2025 - All right reserved by{" "}
           <span className="link-hover hover:text-red-500">
             Md.Atikur Rahaman
           </span>
