@@ -15,11 +15,10 @@ const Banner: React.FC = () => {
   const profileRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-300, 300], [30, -30]);
-  const rotateY = useTransform(x, [-300, 300], [-30, 30]);
+  const rotateX = useTransform(y, [-500, 500], [8, -8]);
+  const rotateY = useTransform(x, [-500, 500], [-8, 8]);
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const rect = profileRef.current?.getBoundingClientRect();
