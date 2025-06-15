@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="cursor-pointer"
+                  className="cursor-pointer py-2"
                 >
                   <FaHeart className="w-5 h-5" />
                   Get In Touch
@@ -118,17 +118,25 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-6"
           >
-            <h4 className="text-xl font-semibold text-white">Connect</h4>
+            <h4 className="text-xl font-semibold text-white">Connect</h4>{" "}
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
                 const IconComponent = social.icon;
+                const isGitHub = social.name === "GitHub";
+                const isLinkedIn = social.name === "LinkedIn";
                 return (
                   <Button
                     key={social.name}
                     variant="ghost"
                     size="lg"
                     asChild
-                    className="text-gray-300 hover:text-white p-3"
+                    className={`p-4 transition-all duration-200 ${
+                      isGitHub
+                        ? "text-gray-300 hover:text-gray-100 hover:bg-gray-800/50"
+                        : isLinkedIn
+                        ? "text-gray-300 hover:text-blue-400 hover:bg-blue-900/30"
+                        : "text-gray-300 hover:text-white"
+                    }`}
                   >
                     <a
                       href={social.url}
@@ -137,19 +145,18 @@ const Footer: React.FC = () => {
                       aria-label={social.name}
                       className="group"
                     >
-                      <IconComponent className="w-8 h-8 group-hover:scale-110 transition-transform duration-200" />
+                      <IconComponent className="w-10 h-10 group-hover:scale-110 transition-all duration-200" />
                     </a>
                   </Button>
                 );
               })}
             </div>
-
             {/* Back to Top */}
             <Button
               variant="outline"
               size="lg"
               onClick={scrollToTop}
-              className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/40"
+              className="w-full py-1 bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/40"
             >
               <FiArrowUp className="w-5 h-5" />
               Back to Top

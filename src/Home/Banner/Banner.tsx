@@ -176,38 +176,47 @@ const Banner: React.FC = () => {
                 variant="premium"
                 size="lg"
                 asChild
-                className="group py-4"
+                className="group py-3"
               >
                 <a
                   href="https://drive.google.com/uc?export=download&id=1ylDoDxYxYV4RLdgFGmw-zF62X9lg8QJs"
                   rel="noreferrer"
                   download
                 >
-                  <FiDownload className="w-5 h-5 group-hover:animate-bounce" />
+                  <FiDownload className="w-8 h-8 group-hover:animate-bounce" />
                   Download Resume
                 </a>
-              </Button>
-
+              </Button>{" "}
               <div className="flex items-center gap-3">
-                <Button variant="outline" size="icon" asChild>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-14 h-14 group hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
+                  asChild
+                >
                   <a
                     href="https://github.com/Atik203"
                     rel="noreferrer"
                     target="_blank"
                     aria-label="GitHub"
                   >
-                    <FaGithub className="w-5 h-5" />
+                    <FaGithub className="w-8 h-8 text-gray-600 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-white transition-colors duration-200" />
                   </a>
                 </Button>
 
-                <Button variant="outline" size="icon" asChild>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-14 h-14 group hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200"
+                  asChild
+                >
                   <a
                     href="https://www.linkedin.com/in/atikur-rahaman-203cba/"
                     rel="noreferrer"
                     target="_blank"
                     aria-label="LinkedIn"
                   >
-                    <FaLinkedin className="w-5 h-5" />
+                    <FaLinkedin className="w-8 h-8 text-blue-600 group-hover:text-blue-700 dark:text-blue-400 dark:group-hover:text-blue-300 transition-colors duration-200" />
                   </a>
                 </Button>
               </div>

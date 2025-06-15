@@ -433,7 +433,7 @@ const Project: React.FC = () => {
           )}
           {/* View More Button */}
           <motion.div variants={itemVariants} className="text-center">
-            <Button variant="premium" size="lg" asChild className="group">
+            <Button variant="premium" size="lg" asChild className="group py-3">
               <a
                 href="https://github.com/Atik203"
                 target="_blank"

@@ -1,16 +1,16 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import emailjs from "@emailjs/browser";
-import React, { useEffect, useRef } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { FiSend, FiMail, FiUser, FiMessageSquare } from "react-icons/fi";
+import React, { useEffect, useRef } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FiMail, FiMessageSquare, FiSend, FiUser } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ContactFormData } from "../../types";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,17 +19,22 @@ const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
 
-  const { register, handleSubmit, reset, formState: { isSubmitting } } = useForm<ContactFormData>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ContactFormData>();
 
   useEffect(() => {
     // GSAP animations for contact form
     if (formRef.current) {
       gsap.fromTo(
         formRef.current,
-        { 
-          x: 50, 
+        {
+          x: 50,
           opacity: 0,
-          scale: 0.9
+          scale: 0.9,
         },
         {
           x: 0,
@@ -41,21 +46,21 @@ const Contact: React.FC = () => {
             trigger: formRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
     }
 
     // GSAP animations for contact info
     if (infoRef.current) {
-      const items = infoRef.current.querySelectorAll('.contact-item');
-      
+      const items = infoRef.current.querySelectorAll(".contact-item");
+
       gsap.fromTo(
         items,
-        { 
-          x: -50, 
-          opacity: 0
+        {
+          x: -50,
+          opacity: 0,
         },
         {
           x: 0,
@@ -67,8 +72,8 @@ const Contact: React.FC = () => {
             trigger: infoRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
     }
@@ -87,7 +92,7 @@ const Contact: React.FC = () => {
         { subject, message, from_email: email },
         userId
       );
-      
+
       toast.success("Message sent successfully! I'll get back to you soon.", {
         position: "top-right",
         autoClose: 5000,
@@ -141,28 +146,31 @@ const Contact: React.FC = () => {
     {
       icon: FaEnvelope,
       title: "Email",
-      content: "atik.rahman203@gmail.com",
-      link: "mailto:atik.rahman203@gmail.com",
-      color: "from-blue-500 to-cyan-500"
+      content: "atikurrahaman0305@gmail.com",
+      link: "mailto:atikurrahaman0305@gmail.com",
+      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: FaGithub,
       title: "GitHub",
       content: "github.com/Atik203",
       link: "https://github.com/Atik203",
-      color: "from-gray-600 to-gray-800"
+      color: "from-gray-600 to-gray-800",
     },
     {
       icon: FaLinkedin,
       title: "LinkedIn",
       content: "Connect with me",
       link: "https://www.linkedin.com/in/atikur-rahaman-203cba/",
-      color: "from-blue-600 to-blue-800"
-    }
+      color: "from-blue-600 to-blue-800",
+    },
   ];
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-background via-primary/5 to-background">
+    <section
+      id="contact"
+      className="py-24 bg-gradient-to-br from-background via-primary/5 to-background"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           ref={contactRef}
@@ -178,32 +186,35 @@ const Contact: React.FC = () => {
               <FiMail className="w-4 h-4" />
               Get In Touch
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
               Contact Me
             </h2>
-            
+
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Ready to collaborate? Let's discuss your project and bring your ideas to life with modern web solutions.
+              Ready to collaborate? Let's discuss your project and bring your
+              ideas to life with modern web solutions.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Contact Information */}
-            <motion.div 
+            <motion.div
               ref={infoRef}
               variants={itemVariants}
               className="space-y-8"
             >
               <Card className="border-primary/20 hover:border-primary/40 transition-colors">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold">Let's Connect</CardTitle>
+                  <CardTitle className="text-2xl font-bold">
+                    Let's Connect
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <p className="text-muted-foreground leading-relaxed">
-                    I'm always interested in new opportunities and exciting projects. 
-                    Whether you have a question, want to collaborate, or just want to say hello, 
-                    feel free to reach out!
+                    I'm always interested in new opportunities and exciting
+                    projects. Whether you have a question, want to collaborate,
+                    or just want to say hello, feel free to reach out!
                   </p>
 
                   <div className="space-y-4">
@@ -218,10 +229,12 @@ const Contact: React.FC = () => {
                           whileHover={{ scale: 1.02 }}
                           className="contact-item flex items-center gap-4 p-4 rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 group"
                         >
-                          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${info.color} group-hover:scale-110 transition-transform duration-300`}>
+                          <div
+                            className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${info.color} group-hover:scale-110 transition-transform duration-300`}
+                          >
                             <IconComponent className="w-6 h-6 text-white" />
                           </div>
-                          
+
                           <div>
                             <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
                               {info.title}
@@ -236,10 +249,17 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="pt-6 border-t border-primary/20">
-                    <h4 className="font-semibold text-foreground mb-3">Available for:</h4>
+                    <h4 className="font-semibold text-foreground mb-3">
+                      Available for:
+                    </h4>
                     <div className="flex flex-wrap gap-2">
-                      {["Freelance Projects", "Full-time Opportunities", "Collaborations", "Consultations"].map((item, index) => (
-                        <span 
+                      {[
+                        "Freelance Projects",
+                        "Full-time Opportunities",
+                        "Collaborations",
+                        "Consultations",
+                      ].map((item, index) => (
+                        <span
                           key={index}
                           className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
                         >
@@ -256,24 +276,26 @@ const Contact: React.FC = () => {
             <motion.div variants={itemVariants}>
               <Card className="border-primary/20 hover:border-primary/40 transition-colors">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold">Send Message</CardTitle>
+                  <CardTitle className="text-2xl font-bold">
+                    Send Message
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form 
+                  <form
                     ref={formRef}
-                    onSubmit={handleSubmit(onSubmit)} 
+                    onSubmit={handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
                     <div className="space-y-4">
                       <div className="relative">
                         <FiUser className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
                         <input
-                          {...register("email", { 
+                          {...register("email", {
                             required: "Email is required",
                             pattern: {
                               value: /^\S+@\S+$/i,
-                              message: "Invalid email address"
-                            }
+                              message: "Invalid email address",
+                            },
                           })}
                           type="email"
                           placeholder="Your email address"
@@ -284,7 +306,9 @@ const Contact: React.FC = () => {
                       <div className="relative">
                         <FiMessageSquare className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
                         <input
-                          {...register("subject", { required: "Subject is required" })}
+                          {...register("subject", {
+                            required: "Subject is required",
+                          })}
                           type="text"
                           placeholder="Subject"
                           className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground"
@@ -294,7 +318,9 @@ const Contact: React.FC = () => {
                       <div className="relative">
                         <FiMail className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
                         <textarea
-                          {...register("message", { required: "Message is required" })}
+                          {...register("message", {
+                            required: "Message is required",
+                          })}
                           placeholder="Your message..."
                           rows={6}
                           className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none"
@@ -302,12 +328,12 @@ const Contact: React.FC = () => {
                       </div>
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      variant="premium" 
-                      size="lg" 
+                    <Button
+                      type="submit"
+                      variant="premium"
+                      size="lg"
                       disabled={isSubmitting}
-                      className="w-full group"
+                      className="w-full group py-3"
                     >
                       {isSubmitting ? (
                         <>
@@ -316,7 +342,7 @@ const Contact: React.FC = () => {
                         </>
                       ) : (
                         <>
-                          <FiSend className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                          <FiSend className="w-8 h-8 group-hover:translate-x-1 transition-transform duration-200" />
                           Send Message
                         </>
                       )}
