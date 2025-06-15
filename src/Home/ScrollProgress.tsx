@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-const ScrollProgress = () => {
+const ScrollProgress: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const controls = useAnimation();
 

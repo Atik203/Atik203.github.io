@@ -1,9 +1,10 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
+    /* Light theme - Modern and professional */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -24,9 +25,15 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.75rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
   }
 
   .dark {
+    /* Dark theme - Modern and sleek */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -46,6 +53,11 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 263.4 70% 50.4%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -83,6 +95,7 @@
   }
 }
 
+/* Modern animations and effects */
 @layer components {
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
@@ -113,30 +126,6 @@
   .dark .glassmorphism {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .project-card {
-    @apply bg-card border border-border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105;
-  }
-
-  .skill-icon-hover {
-    @apply transition-all duration-300 hover:scale-110 hover:rotate-6;
-  }
-
-  .gradient-bg {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary)) 0%,
-      hsl(var(--secondary)) 100%
-    );
-  }
-
-  .dark .gradient-bg {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary)) 0%,
-      hsl(var(--accent)) 100%
-    );
   }
 }
 
@@ -193,21 +182,43 @@
   }
 }
 
-/* Legacy project styles */
+/* Custom project showcase styles */
+.project-card {
+  @apply bg-card border border-border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105;
+}
+
+.skill-icon-hover {
+  @apply transition-all duration-300 hover:scale-110 hover:rotate-6;
+}
+
+/* Modern gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--secondary)) 100%
+  );
+}
+
+.dark .gradient-bg {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--accent)) 100%
+  );
+}
 .date-style {
   margin-left: 15px;
 }
-
 .date-style-2 {
   margin-right: 15px;
 }
-
 .scroll-progress-bar {
   position: fixed;
   top: 0;
   left: 0;
   height: 10px;
-  background-color: hsl(var(--primary));
+  background-color: red;
 }
 
 .box {
@@ -222,12 +233,10 @@
   background: url("https://i.ibb.co/3BX33v0/screencapture-contesthub-surge-sh-2023-12-12-22-59-38.png");
   background-size: cover;
 }
-
 .box.box-2 {
   background: url("https://i.ibb.co/q9jn4vb/screencapture-strong-cows-surge-sh-2023-12-12-23-10-27.png");
   background-size: cover;
 }
-
 .box.box-3 {
   background: url("https://i.ibb.co/Ssd8hwx/screencapture-restocontrol-surge-sh-2023-12-12-23-11-51.png");
   background-size: cover;
