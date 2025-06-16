@@ -106,7 +106,7 @@ const About: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Content Section */}{" "}
             <motion.div variants={itemVariants} className="space-y-8">
-              <Card className="border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+              <Card className="border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <FaCode className="w-6 h-6 text-primary" />
@@ -145,7 +145,7 @@ const About: React.FC = () => {
               </Card>
               {/* Key Achievements */}{" "}
               <div ref={cardsRef} className="grid grid-cols-2 gap-4">
-                <Card className="experience-card text-center p-6 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 hover:scale-105 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+                <Card className="experience-card text-center p-6 border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 hover:scale-105 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                   <CardContent className="p-0 space-y-2">
                     <FaBriefcase className="w-8 h-8 text-primary mx-auto" />
                     <div className="text-2xl font-bold text-primary">2+</div>
@@ -155,7 +155,7 @@ const About: React.FC = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="experience-card text-center p-6 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 hover:scale-105 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+                <Card className="experience-card text-center p-6 border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 hover:scale-105 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                   <CardContent className="p-0 space-y-2">
                     <FiTrendingUp className="w-8 h-8 text-primary mx-auto" />
                     <div className="text-2xl font-bold text-primary">10+</div>

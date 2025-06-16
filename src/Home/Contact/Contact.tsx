@@ -219,7 +219,7 @@ const Contact: React.FC = () => {
               className="space-y-8 h-full"
             >
               {" "}
-              <Card className="border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 h-full flex flex-col dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+              <Card className="border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 h-full flex flex-col dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-2xl font-bold">
                     Let's Connect
@@ -287,7 +287,7 @@ const Contact: React.FC = () => {
             {/* Contact Form */}
             <motion.div variants={itemVariants} className="h-full">
               {" "}
-              <Card className="border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 h-full flex flex-col dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+              <Card className="border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 h-full flex flex-col dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 {" "}
                 <CardHeader className="pb-4">
                   <CardTitle className="text-2xl font-bold">
@@ -437,7 +437,7 @@ const Contact: React.FC = () => {
                             required: "Message is required",
                           })}
                           placeholder="Your message..."
-                          rows={5}
+                          rows={6}
                           className="w-full pl-12 pr-4 py-3 bg-background border-2 border-primary/20 dark:border-primary/30 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none hover:border-primary/40 dark:hover:border-primary/50"
                           whileFocus={{
                             scale: 1.02,

@@ -151,7 +151,7 @@ const Banner: React.FC = () => {
             <motion.div variants={itemVariants} className="space-y-4">
               {" "}
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 rounded-full text-primary font-medium text-sm backdrop-blur-sm shadow-lg dark:shadow-primary/10"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border-2 border-primary/20 dark:border-primary/30 rounded-full text-primary font-medium text-sm backdrop-blur-sm shadow-lg dark:shadow-primary/10"
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: "hsl(var(--primary) / 0.2)",
@@ -220,27 +220,27 @@ const Banner: React.FC = () => {
               using cutting-edge technologies like React, Next.js, Node.js, and
               TypeScript.
             </motion.p>{" "}
-            {/* Stats Cards */}
+            {/* Stats Cards */}{" "}
             <motion.div
               ref={statsRef}
               variants={itemVariants}
               className="grid grid-cols-3 gap-4"
             >
-              <Card className="text-center p-4 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+              <Card className="text-center p-4 border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardContent className="p-0">
                   <div className="text-2xl font-bold text-primary">2+</div>
                   <div className="text-sm text-muted-foreground">Years Exp</div>
                 </CardContent>
               </Card>
 
-              <Card className="text-center p-4 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+              <Card className="text-center p-4 border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardContent className="p-0">
                   <div className="text-2xl font-bold text-primary">10+</div>
                   <div className="text-sm text-muted-foreground">Projects</div>
                 </CardContent>
               </Card>
 
-              <Card className="text-center p-4 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
+              <Card className="text-center p-4 border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardContent className="p-0">
                   <div className="text-2xl font-bold text-primary">15+</div>
                   <div className="text-sm text-muted-foreground">

@@ -141,7 +141,7 @@ const Service: React.FC = () => {
           {" "}
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 rounded-full text-primary font-medium text-sm mb-4 backdrop-blur-sm shadow-lg dark:shadow-primary/10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border-2 border-primary/20 dark:border-primary/30 rounded-full text-primary font-medium text-sm mb-4 backdrop-blur-sm shadow-lg dark:shadow-primary/10">
               <FaCode className="w-4 h-4" />
               Professional Services
             </div>
@@ -169,7 +169,7 @@ const Service: React.FC = () => {
               return (
                 <Card
                   key={index}
-                  className={`service-card group relative overflow-hidden border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl dark:shadow-primary/5 backdrop-blur-sm ${service.bgColor}`}
+                  className={`service-card group relative overflow-hidden border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl dark:shadow-primary/5 backdrop-blur-sm ${service.bgColor}`}
                 >
                   {" "}
                   <CardHeader className="relative">
@@ -214,7 +214,7 @@ const Service: React.FC = () => {
                   href="#contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/20 dark:border-primary/30"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-primary/20 dark:border-primary/30"
                 >
                   Get In Touch
                 </motion.a>
