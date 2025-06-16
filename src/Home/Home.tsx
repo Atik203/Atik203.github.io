@@ -41,16 +41,16 @@ const Home: React.FC = () => {
         <>
           {/* Scroll Progress Indicator */}
           <ScrollIndicator />
-
           {/* Background Effects */}
           <ParticleBackground />
           <FloatingElements />
-          <AnimatedCursor />
-
-          {/* Main Content */}
-          <div className="relative z-20">
+          <AnimatedCursor /> {/* Main Content */}
+          <div className="relative z-20 w-full">
             <Navbar />
-            <div id="home" className="container mx-auto px-4">
+            <div
+              id="home"
+              className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full"
+            >
               <Banner />
               <Skills />
               <Service />

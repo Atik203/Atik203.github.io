@@ -2,6 +2,56 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Mobile Responsiveness Fixes */
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scrolling and fix section heights */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Remove overflow scrolling from all sections */
+section {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Ensure all containers don't create scrollbars */
+.container,
+.mx-auto {
+  overflow: visible !important;
+}
+
+/* Remove any fixed heights that might cause scroll */
+div[class*="h-screen"],
+div[class*="min-h-screen"] {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Hide cursor effects on mobile */
+@media (max-width: 768px) {
+  .fixed.z-50.mix-blend-difference,
+  .fixed.z-40.blur-sm {
+    display: none !important;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -235,4 +285,36 @@
 
 .box:hover {
   background-position: bottom;
+}
+
+/* Water ripple animation */
+@keyframes ripple {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: scale(1.1) rotate(90deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.3;
+  }
+  75% {
+    transform: scale(1.1) rotate(270deg);
+    opacity: 0.4;
+  }
+}
+
+/* Smooth pointer animation */
+@keyframes smoothPointer {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
 }

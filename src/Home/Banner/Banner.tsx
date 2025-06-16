@@ -120,19 +120,33 @@ const Banner: React.FC = () => {
       },
     },
   };
-
   return (
-    <section className="min-h-screen flex items-center py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {" "}
+    <section className="flex items-center py-20 relative">
+      {/* Enhanced Water Ripple Background */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 pointer-events-none"></div>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, hsl(var(--purple-500) / 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, hsl(var(--blue-500) / 0.1) 0%, transparent 50%)
+            `,
+            animation: "ripple 8s ease-in-out infinite",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content Section */}
           <motion.div
             ref={textRef}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-8"
+            className="space-y-6 lg:space-y-8 order-2 lg:order-1"
           >
             <motion.div variants={itemVariants} className="space-y-4">
               <motion.div
@@ -295,7 +309,10 @@ const Banner: React.FC = () => {
             </motion.div>
           </motion.div>{" "}
           {/* Profile Image Section */}
-          <motion.div className="relative" style={{ perspective: 1000 }}>
+          <motion.div
+            className="relative order-1 lg:order-2"
+            style={{ perspective: 1000 }}
+          >
             <motion.div
               ref={profileRef}
               className="relative z-10"
@@ -405,7 +422,7 @@ const Banner: React.FC = () => {
                 delay: 2,
               }}
             >
-              {"{}"}
+              {"{}"}{" "}
             </motion.div>
           </motion.div>
         </div>
