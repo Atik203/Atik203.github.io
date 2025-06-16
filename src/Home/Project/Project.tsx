@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -19,6 +18,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef, useState } from "react";
 import { FaCode, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { Button } from "../../components/ui/button";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,7 +1,7 @@
-import React from "react";
-import "./loading.css";
-import animation from "../../../public/animation.json";
 import Lottie from "lottie-react";
+import React from "react";
+import animation from "../../assets/animation.json";
+import "./loading.css";
 
 const Loading: React.FC = () => {
   return (

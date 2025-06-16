@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiAward, FiDownload } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
-import img from "../../../public/banner-image.png";
+import img from "../../assets/banner-image.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
