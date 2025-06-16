@@ -79,10 +79,10 @@ const Contact: React.FC = () => {
   }, []);
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
     const { name, email, subject, message } = data;
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001/api";
+    const apiUrl = "https://my-portfolio-email-backend.vercel.app/api";
 
     try {
-      const response = await fetch(`${apiUrl}/send-email`, {
+      const response = await fetch(`${apiUrl}/send-email/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

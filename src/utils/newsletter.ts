@@ -12,11 +12,7 @@ export interface NewsletterResponse {
 }
 
 // API configuration - Uses environment variables
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ||
-  (typeof window !== "undefined" && window.location.hostname === "localhost"
-    ? "http://localhost:3001" // Local development fallback
-    : "https://your-portfolio-api.vercel.app"); // Production fallback
+const API_BASE_URL = "https://my-portfolio-email-backend.vercel.app/api"; // Local development fallback
 
 // Newsletter subscription using your backend API
 export const subscribeToNewsletter = async (
@@ -43,7 +39,7 @@ export const subscribeToNewsletter = async (
     }
 
     // Send subscription request to your backend
-    const response = await fetch(`${API_BASE_URL}/api/newsletter/subscribe`, {
+    const response = await fetch(`${API_BASE_URL}/newsletter/subscribe/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
