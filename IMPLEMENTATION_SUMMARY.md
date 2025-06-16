@@ -3,6 +3,7 @@
 ## ✅ Completed Features
 
 ### 🎯 Newsletter Subscription
+
 - **Backend API**: Nodemailer integration with Gmail
 - **Frontend Integration**: Real-time subscription with validation
 - **User Experience**: Loading states, success/error messages
@@ -10,6 +11,7 @@
 - **Duplicate Prevention**: LocalStorage check for better UX
 
 ### 🎨 Legal Modals (shadcn UI)
+
 - **Privacy Policy Modal**: Comprehensive privacy policy with dark theme support
 - **Terms of Service Modal**: Professional terms with proper styling
 - **Responsive Design**: Mobile-friendly modal layouts
@@ -17,6 +19,7 @@
 - **Dark Theme**: Proper X button and content visibility
 
 ### 🚀 Deployment Configuration
+
 - **API Backend**: Vercel.json configuration for serverless deployment
 - **Frontend**: Optimized Vite build with caching headers
 - **Environment Variables**: Development and production configurations
@@ -81,12 +84,14 @@
 ## 📧 Email Features
 
 ### Welcome Email (to subscriber)
+
 - Professional welcome message
 - Portfolio information
 - Call-to-action buttons
 - Unsubscribe instructions
 
 ### Notification Email (to you)
+
 - New subscriber alert
 - Subscriber email and timestamp
 - Clean, formatted layout
@@ -94,12 +99,14 @@
 ## 🚀 Deployment Ready
 
 ### Backend (Vercel)
+
 - Serverless function configuration
 - Environment variable templates
 - CORS setup for production
 - Rate limiting configuration
 
 ### Frontend (Vercel)
+
 - Optimized Vite build
 - Environment-based API URLs
 - Caching headers for performance
@@ -116,12 +123,14 @@
 ## 📞 Key Configurations
 
 ### Required Environment Variables (API)
+
 - `GMAIL_USER`: atikurrahaman0305@gmail.com
 - `GMAIL_APP_PASSWORD`: Your Gmail app password
 - `FRONTEND_URL`: Your frontend domain
 - `NODE_ENV`: production
 
 ### Required Environment Variables (Frontend)
+
 - `VITE_API_BASE_URL`: Your API domain
 - `VITE_ENVIRONMENT`: production
 
