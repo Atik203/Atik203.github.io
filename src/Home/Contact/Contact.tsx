@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiMail, FiMessageSquare, FiSend, FiUser } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -78,36 +77,46 @@ const Contact: React.FC = () => {
       );
     }
   }, []);
-
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
-    const { email, subject, message } = data;
-    const serviceId = "service_2suk5wm";
-    const templateId = "template_3lyq87k";
-    const userId = "vRsVS9uPA4-dJP8rv";
+    const { name, email, subject, message } = data;
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001/api";
 
     try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        { subject, message, from_email: email },
-        userId
-      );
-
-      toast.success("Message sent successfully! I'll get back to you soon.", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
+      const response = await fetch(`${apiUrl}/send-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+        }),
       });
-      reset();
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Message sent successfully! I'll get back to you soon.", {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        reset();
+      } else {
+        throw new Error(result.error || "Failed to send email");
+      }
     } catch (error) {
-      toast.error("Failed to send message. Please try again.", {
-        position: "top-right",
-        autoClose: 5000,
+      console.error("Contact form error:", error);
+      toast.error("Failed to send message. Please try again later.", {
+        position: "bottom-right",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -141,7 +150,6 @@ const Contact: React.FC = () => {
       },
     },
   };
-
   const contactInfo = [
     {
       icon: FaEnvelope,
@@ -163,6 +171,13 @@ const Contact: React.FC = () => {
       content: "Connect with me",
       link: "https://www.linkedin.com/in/atikur-rahaman-203cba/",
       color: "from-blue-600 to-blue-800",
+    },
+    {
+      icon: FaFacebook,
+      title: "Facebook",
+      content: "Follow me on Facebook",
+      link: "https://www.facebook.com/atikur.rahaman.324529",
+      color: "from-blue-500 to-blue-700",
     },
   ];
 
@@ -195,22 +210,22 @@ const Contact: React.FC = () => {
               Ready to collaborate? Let's discuss your project and bring your
               ideas to life with modern web solutions.
             </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          </motion.div>{" "}
+          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
             {/* Contact Information */}
             <motion.div
               ref={infoRef}
               variants={itemVariants}
-              className="space-y-8"
+              className="space-y-8 h-full"
             >
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors">
-                <CardHeader>
+              {" "}
+              <Card className="border-primary/20 hover:border-primary/40 transition-colors h-full flex flex-col">
+                <CardHeader className="pb-4">
                   <CardTitle className="text-2xl font-bold">
                     Let's Connect
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 flex-1 flex flex-col justify-between pt-0">
                   <p className="text-muted-foreground leading-relaxed">
                     I'm always interested in new opportunities and exciting
                     projects. Whether you have a question, want to collaborate,
@@ -270,25 +285,26 @@ const Contact: React.FC = () => {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
-
+            </motion.div>{" "}
             {/* Contact Form */}
-            <motion.div variants={itemVariants}>
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors">
-                <CardHeader>
+            <motion.div variants={itemVariants} className="h-full">
+              <Card className="border-primary/20 hover:border-primary/40 transition-colors h-full flex flex-col">
+                {" "}
+                <CardHeader className="pb-4">
                   <CardTitle className="text-2xl font-bold">
                     Send Message
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 pt-0">
+                  {" "}
                   <form
                     ref={formRef}
                     onSubmit={handleSubmit(onSubmit)}
-                    className="space-y-6"
+                    className="space-y-4"
                   >
-                    {" "}
-                    <div className="space-y-6">
-                      {/* Email Input */}
+                    <div className="space-y-4">
+                      {" "}
+                      {/* Name Input */}
                       <motion.div
                         className="relative group"
                         whileHover={{ scale: 1.02 }}
@@ -305,16 +321,16 @@ const Contact: React.FC = () => {
                           <FiUser className="w-5 h-5" />
                         </motion.div>
                         <motion.input
-                          {...register("email", {
-                            required: "Email is required",
-                            pattern: {
-                              value: /^\S+@\S+$/i,
-                              message: "Invalid email address",
+                          {...register("name", {
+                            required: "Name is required",
+                            minLength: {
+                              value: 2,
+                              message: "Name must be at least 2 characters",
                             },
                           })}
-                          type="email"
-                          placeholder="Your email address"
-                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40"
+                          type="text"
+                          placeholder="Your full name"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/60 dark:hover:border-white/40"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",
@@ -327,7 +343,45 @@ const Contact: React.FC = () => {
                           transition={{ duration: 0.3 }}
                         />
                       </motion.div>
-
+                      {/* Email Input */}
+                      <motion.div
+                        className="relative group"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          className="absolute left-4 top-4 w-5 h-5 text-muted-foreground"
+                          whileHover={{
+                            scale: 1.2,
+                            color: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <FiMail className="w-5 h-5" />
+                        </motion.div>
+                        <motion.input
+                          {...register("email", {
+                            required: "Email is required",
+                            pattern: {
+                              value: /^\S+@\S+$/i,
+                              message: "Invalid email address",
+                            },
+                          })}
+                          type="email"
+                          placeholder="Your email address"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/60 dark:hover:border-white/40"
+                          whileFocus={{
+                            scale: 1.02,
+                            borderColor: "hsl(var(--primary))",
+                          }}
+                          transition={{ duration: 0.2 }}
+                        />
+                        <motion.div
+                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 pointer-events-none"
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.div>
                       {/* Subject Input */}
                       <motion.div
                         className="relative group"
@@ -350,7 +404,7 @@ const Contact: React.FC = () => {
                           })}
                           type="text"
                           placeholder="Subject"
-                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/60 dark:hover:border-white/40"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",
@@ -363,7 +417,6 @@ const Contact: React.FC = () => {
                           transition={{ duration: 0.3 }}
                         />
                       </motion.div>
-
                       {/* Message Textarea */}
                       <motion.div
                         className="relative group"
@@ -385,8 +438,8 @@ const Contact: React.FC = () => {
                             required: "Message is required",
                           })}
                           placeholder="Your message..."
-                          rows={6}
-                          className="w-full pl-12 pr-4 py-4 bg-background border border-primary/20 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none hover:border-primary/40"
+                          rows={5}
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none hover:border-primary/60 dark:hover:border-white/40"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",

@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiAward, FiDownload } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
 import img from "../../assets/banner-image.png";
@@ -274,37 +274,45 @@ const Banner: React.FC = () => {
                 </a>
               </Button>{" "}
               <div className="flex items-center gap-3">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-14 h-14 group hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
-                  asChild
+                {/* GitHub */}
+                <motion.a
+                  href="https://github.com/Atik203"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="group"
                 >
-                  <a
-                    href="https://github.com/Atik203"
-                    rel="noreferrer"
-                    target="_blank"
-                    aria-label="GitHub"
-                  >
-                    <FaGithub className="w-8 h-8 text-gray-600 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-white transition-colors duration-200" />
-                  </a>
-                </Button>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-gray-600 to-gray-800 group-hover:scale-110 transition-transform duration-300">
+                    <FaGithub className="w-5 h-5 text-white" />
+                  </div>
+                </motion.a>
 
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-14 h-14 group hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200"
-                  asChild
+                {/* LinkedIn */}
+                <motion.a
+                  href="https://www.linkedin.com/in/atikur-rahaman-203cba/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="group"
                 >
-                  <a
-                    href="https://www.linkedin.com/in/atikur-rahaman-203cba/"
-                    rel="noreferrer"
-                    target="_blank"
-                    aria-label="LinkedIn"
-                  >
-                    <FaLinkedin className="w-8 h-8 text-blue-600 group-hover:text-blue-700 dark:text-blue-400 dark:group-hover:text-blue-300 transition-colors duration-200" />
-                  </a>
-                </Button>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 group-hover:scale-110 transition-transform duration-300">
+                    <FaLinkedin className="w-5 h-5 text-white" />
+                  </div>
+                </motion.a>
+
+                {/* Facebook */}
+                <motion.a
+                  href="https://www.facebook.com/atikur.rahaman.324529"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="group"
+                >
+                  {" "}
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 group-hover:scale-110 transition-transform duration-300">
+                    <FaFacebook className="w-5 h-5 text-white" />
+                  </div>
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>{" "}

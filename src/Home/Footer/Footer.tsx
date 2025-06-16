@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 import React from "react";
-import { FaGithub, FaHeart, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaHeart, FaLinkedin } from "react-icons/fa";
 import { FiArrowUp } from "react-icons/fi";
 import { Link as ScrollLink } from "react-scroll";
 
@@ -15,7 +15,6 @@ const Footer: React.FC = () => {
     { name: "About", to: "about" },
     { name: "Contact", to: "contact" },
   ];
-
   const socialLinks = [
     {
       name: "GitHub",
@@ -26,6 +25,11 @@ const Footer: React.FC = () => {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/atikur-rahaman-203cba/",
       icon: FaLinkedin,
+    },
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/atikur.rahaman.324529",
+      icon: FaFacebook,
     },
   ];
 
@@ -122,32 +126,28 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
                 const IconComponent = social.icon;
-                const isGitHub = social.name === "GitHub";
-                const isLinkedIn = social.name === "LinkedIn";
+                const gradientColors =
+                  social.name === "GitHub"
+                    ? "from-gray-600 to-gray-800"
+                    : social.name === "LinkedIn"
+                    ? "from-blue-600 to-blue-800"
+                    : "from-blue-500 to-blue-700"; // Facebook
+
                 return (
-                  <Button
+                  <motion.a
                     key={social.name}
-                    variant="ghost"
-                    size="lg"
-                    asChild
-                    className={`p-4 transition-all duration-200 ${
-                      isGitHub
-                        ? "text-gray-300 hover:text-gray-100 hover:bg-gray-800/50"
-                        : isLinkedIn
-                        ? "text-gray-300 hover:text-blue-400 hover:bg-blue-900/30"
-                        : "text-gray-300 hover:text-white"
-                    }`}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    className="group"
                   >
-                    <a
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.name}
-                      className="group"
+                    <div
+                      className={`inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br ${gradientColors} group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <IconComponent className="w-10 h-10 group-hover:scale-110 transition-all duration-200" />
-                    </a>
-                  </Button>
+                      <IconComponent className="w-5 h-5 text-white" />
+                    </div>
+                  </motion.a>
                 );
               })}
             </div>
