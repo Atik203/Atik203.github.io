@@ -11,11 +11,12 @@ export interface NewsletterResponse {
   error?: string;
 }
 
-// API configuration - Update these with your actual API URL
+// API configuration - Uses environment variables
 const API_BASE_URL =
-  typeof window !== "undefined" && window.location.hostname === "localhost"
-    ? "http://localhost:3001" // Local development API
-    : "https://your-api-domain.com"; // Replace with your production API URL
+  import.meta.env.VITE_API_BASE_URL ||
+  (typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? "http://localhost:3001" // Local development fallback
+    : "https://your-portfolio-api.vercel.app"); // Production fallback
 
 // Newsletter subscription using your backend API
 export const subscribeToNewsletter = async (
