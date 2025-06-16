@@ -124,11 +124,10 @@ const Service: React.FC = () => {
       bgColor: "bg-pink-50 dark:bg-pink-950/20",
     },
   ];
-
   return (
     <section
       id="service"
-      className="py-24 bg-gradient-to-br from-background via-accent/5 to-background"
+      className="py-24 bg-gradient-to-br from-background via-accent/5 to-background border-b section-border-light"
     >
       <div className="container mx-auto px-4">
         <motion.div
@@ -139,9 +138,10 @@ const Service: React.FC = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="space-y-16"
         >
+          {" "}
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 rounded-full text-primary font-medium text-sm mb-4 backdrop-blur-sm shadow-lg dark:shadow-primary/10">
               <FaCode className="w-4 h-4" />
               Professional Services
             </div>
@@ -158,7 +158,6 @@ const Service: React.FC = () => {
               delivering high-quality solutions for diverse clients
             </p>
           </motion.div>
-
           {/* Services Grid */}
           <motion.div
             ref={cardsRef}
@@ -170,11 +169,12 @@ const Service: React.FC = () => {
               return (
                 <Card
                   key={index}
-                  className={`service-card group relative overflow-hidden border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl ${service.bgColor}`}
+                  className={`service-card group relative overflow-hidden border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl dark:shadow-primary/5 backdrop-blur-sm ${service.bgColor}`}
                 >
+                  {" "}
                   <CardHeader className="relative">
                     <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
+                      className={`service-icon inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
                     >
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
@@ -183,13 +183,11 @@ const Service: React.FC = () => {
                       {service.title}
                     </CardTitle>
                   </CardHeader>
-
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
                   </CardContent>
-
                   {/* Hover Effect Overlay */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
@@ -198,7 +196,6 @@ const Service: React.FC = () => {
               );
             })}
           </motion.div>
-
           {/* Bottom CTA Section */}
           <motion.div
             variants={itemVariants}
@@ -211,14 +208,13 @@ const Service: React.FC = () => {
               <p className="text-muted-foreground mb-6">
                 Let's collaborate to bring your ideas to life with modern,
                 scalable, and user-friendly solutions.
-              </p>
-
+              </p>{" "}
               <div className="flex flex-wrap justify-center gap-4">
                 <motion.a
                   href="#contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary to-purple-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/20 dark:border-primary/30"
                 >
                   Get In Touch
                 </motion.a>
@@ -227,7 +223,7 @@ const Service: React.FC = () => {
                   href="#project"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary/20 text-primary rounded-xl font-semibold hover:bg-primary/5 transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary/30 dark:border-primary/40 text-primary rounded-xl font-semibold hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm"
                 >
                   View Portfolio
                 </motion.a>

@@ -75,7 +75,6 @@ div[class*="min-h-screen"] {
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.75rem;
   }
-
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -93,7 +92,7 @@ div[class*="min-h-screen"] {
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
+    --border: 217.2 32.6% 25%;
     --input: 217.2 32.6% 17.5%;
     --ring: 263.4 70% 50.4%;
   }
@@ -186,6 +185,78 @@ div[class*="min-h-screen"] {
       135deg,
       hsl(var(--primary)) 0%,
       hsl(var(--accent)) 100%
+    );
+  }
+
+  /* Enhanced dark mode card styling */
+  .dark .card-enhanced {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .card-enhanced:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Better section borders for dark mode */
+  .section-border-light {
+    border-color: hsl(var(--border));
+  }
+
+  .dark .section-border-light {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Enhanced Skills Section Styling */
+  .skill-section-container {
+    @apply border-b border-border/20;
+  }
+
+  .dark .skill-section-container {
+    @apply border-border/40 bg-background/50;
+  }
+
+  .skill-card-enhanced {
+    @apply border border-border/50 hover:border-primary/40 transition-all duration-300;
+  }
+
+  .dark .skill-card-enhanced {
+    @apply border-border/70 hover:border-primary/50 bg-card/50 backdrop-blur-sm shadow-lg shadow-primary/5;
+  }
+
+  .tech-chip-enhanced {
+    @apply border transition-all duration-300 backdrop-blur-sm;
+  }
+  .dark .tech-chip-enhanced {
+    @apply border-opacity-40 hover:border-opacity-60;
+  }
+
+  /* Enhanced service card styling for dark mode */
+  .dark .service-card {
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .service-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Service icon enhancement for dark mode */
+  .dark .service-card .service-icon {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Service section background enhancement */
+  .dark #service {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--background)) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      hsl(var(--background)) 100%
     );
   }
 }

@@ -121,10 +121,10 @@ const Banner: React.FC = () => {
     },
   };
   return (
-    <section className="flex items-center py-20 relative">
+    <section className="flex items-center py-20 relative border-b section-border-light">
       {/* Enhanced Water Ripple Background */}
       <div className="absolute inset-0 opacity-30 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/5 to-blue-500/10 dark:from-primary/20 dark:via-purple-500/10 dark:to-blue-500/20 pointer-events-none"></div>
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -149,8 +149,9 @@ const Banner: React.FC = () => {
             className="space-y-6 lg:space-y-8 order-2 lg:order-1"
           >
             <motion.div variants={itemVariants} className="space-y-4">
+              {" "}
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 rounded-full text-primary font-medium text-sm backdrop-blur-sm shadow-lg dark:shadow-primary/10"
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: "hsl(var(--primary) / 0.2)",
@@ -165,7 +166,6 @@ const Banner: React.FC = () => {
                 </motion.div>
                 2+ Years Experience
               </motion.div>
-
               <motion.h1
                 className="text-4xl md:text-6xl lg:text-7xl font-bold"
                 whileHover={{ scale: 1.02 }}
@@ -186,7 +186,6 @@ const Banner: React.FC = () => {
                   Atikur
                 </motion.span>
               </motion.h1>
-
               <div className="text-2xl md:text-3xl lg:text-4xl font-semibold">
                 <span className="text-muted-foreground">I'm a </span>
                 <span className="text-primary">
@@ -206,7 +205,6 @@ const Banner: React.FC = () => {
                 </span>
               </div>
             </motion.div>
-
             <motion.p
               variants={itemVariants}
               className="text-lg text-muted-foreground leading-relaxed max-w-2xl"
@@ -221,29 +219,28 @@ const Banner: React.FC = () => {
               </span>{" "}
               using cutting-edge technologies like React, Next.js, Node.js, and
               TypeScript.
-            </motion.p>
-
+            </motion.p>{" "}
             {/* Stats Cards */}
             <motion.div
               ref={statsRef}
               variants={itemVariants}
               className="grid grid-cols-3 gap-4"
             >
-              <Card className="text-center p-4 border-primary/20 hover:border-primary/40 transition-colors">
+              <Card className="text-center p-4 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardContent className="p-0">
                   <div className="text-2xl font-bold text-primary">2+</div>
                   <div className="text-sm text-muted-foreground">Years Exp</div>
                 </CardContent>
               </Card>
 
-              <Card className="text-center p-4 border-primary/20 hover:border-primary/40 transition-colors">
+              <Card className="text-center p-4 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardContent className="p-0">
                   <div className="text-2xl font-bold text-primary">10+</div>
                   <div className="text-sm text-muted-foreground">Projects</div>
                 </CardContent>
               </Card>
 
-              <Card className="text-center p-4 border-primary/20 hover:border-primary/40 transition-colors">
+              <Card className="text-center p-4 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardContent className="p-0">
                   <div className="text-2xl font-bold text-primary">15+</div>
                   <div className="text-sm text-muted-foreground">
@@ -252,7 +249,6 @@ const Banner: React.FC = () => {
                 </CardContent>
               </Card>
             </motion.div>
-
             {/* Action Buttons */}
             <motion.div
               variants={itemVariants}
@@ -370,11 +366,10 @@ const Banner: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 />
               </div>
-            </motion.div>
-
+            </motion.div>{" "}
             {/* Enhanced Floating elements */}
             <motion.div
-              className="absolute top-10 -left-10 w-20 h-20 bg-gradient-to-r from-primary to-purple-500 rounded-full opacity-20"
+              className="absolute top-10 -left-10 w-20 h-20 bg-gradient-to-r from-primary to-purple-500 rounded-full opacity-20 dark:opacity-30"
               animate={{
                 y: [0, -20, 0],
                 rotate: [0, 360],
@@ -387,7 +382,7 @@ const Banner: React.FC = () => {
               }}
             />
             <motion.div
-              className="absolute bottom-10 -right-10 w-16 h-16 bg-gradient-to-r from-blue-500 to-primary rounded-full opacity-30"
+              className="absolute bottom-10 -right-10 w-16 h-16 bg-gradient-to-r from-blue-500 to-primary rounded-full opacity-30 dark:opacity-40"
               animate={{
                 y: [0, 15, 0],
                 x: [0, 10, 0],
@@ -400,10 +395,9 @@ const Banner: React.FC = () => {
                 delay: 1,
               }}
             />
-
             {/* Code symbols floating */}
             <motion.div
-              className="absolute top-1/4 -right-20 text-4xl text-primary/20"
+              className="absolute top-1/4 -right-20 text-4xl text-primary/20 dark:text-primary/30"
               animate={{
                 y: [0, -30, 0],
                 rotate: [0, 15, 0],
@@ -416,9 +410,8 @@ const Banner: React.FC = () => {
             >
               {"</>"}
             </motion.div>
-
             <motion.div
-              className="absolute bottom-1/4 -left-20 text-3xl text-purple-500/20"
+              className="absolute bottom-1/4 -left-20 text-3xl text-purple-500/20 dark:text-purple-500/30"
               animate={{
                 y: [0, 20, 0],
                 rotate: [0, -15, 0],

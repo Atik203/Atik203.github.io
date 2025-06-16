@@ -184,7 +184,7 @@ const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-gradient-to-br from-background via-primary/5 to-background"
+      className="py-24 bg-gradient-to-br from-background via-primary/5 to-background border-b section-border-light"
     >
       <div className="container mx-auto px-4">
         <motion.div
@@ -219,7 +219,7 @@ const Contact: React.FC = () => {
               className="space-y-8 h-full"
             >
               {" "}
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors h-full flex flex-col">
+              <Card className="border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 h-full flex flex-col dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-2xl font-bold">
                     Let's Connect
@@ -231,7 +231,6 @@ const Contact: React.FC = () => {
                     projects. Whether you have a question, want to collaborate,
                     or just want to say hello, feel free to reach out!
                   </p>
-
                   <div className="space-y-4">
                     {contactInfo.map((info, index) => {
                       const IconComponent = info.icon;
@@ -242,7 +241,7 @@ const Contact: React.FC = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02 }}
-                          className="contact-item flex items-center gap-4 p-4 rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 group"
+                          className="contact-item flex items-center gap-4 p-4 rounded-xl border-2 border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-300 group"
                         >
                           <div
                             className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${info.color} group-hover:scale-110 transition-transform duration-300`}
@@ -261,9 +260,8 @@ const Contact: React.FC = () => {
                         </motion.a>
                       );
                     })}
-                  </div>
-
-                  <div className="pt-6 border-t border-primary/20">
+                  </div>{" "}
+                  <div className="pt-6 border-t-2 border-primary/30 dark:border-primary/40">
                     <h4 className="font-semibold text-foreground mb-3">
                       Available for:
                     </h4>
@@ -288,7 +286,8 @@ const Contact: React.FC = () => {
             </motion.div>{" "}
             {/* Contact Form */}
             <motion.div variants={itemVariants} className="h-full">
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors h-full flex flex-col">
+              {" "}
+              <Card className="border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 transition-all duration-300 h-full flex flex-col dark:bg-card/50 backdrop-blur-sm shadow-lg dark:shadow-primary/5">
                 {" "}
                 <CardHeader className="pb-4">
                   <CardTitle className="text-2xl font-bold">
@@ -319,7 +318,7 @@ const Contact: React.FC = () => {
                           transition={{ duration: 0.2 }}
                         >
                           <FiUser className="w-5 h-5" />
-                        </motion.div>
+                        </motion.div>{" "}
                         <motion.input
                           {...register("name", {
                             required: "Name is required",
@@ -330,7 +329,7 @@ const Contact: React.FC = () => {
                           })}
                           type="text"
                           placeholder="Your full name"
-                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/60 dark:hover:border-white/40"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-primary/20 dark:border-primary/30 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40 dark:hover:border-primary/50"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",
@@ -358,7 +357,7 @@ const Contact: React.FC = () => {
                           transition={{ duration: 0.2 }}
                         >
                           <FiMail className="w-5 h-5" />
-                        </motion.div>
+                        </motion.div>{" "}
                         <motion.input
                           {...register("email", {
                             required: "Email is required",
@@ -369,7 +368,7 @@ const Contact: React.FC = () => {
                           })}
                           type="email"
                           placeholder="Your email address"
-                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/60 dark:hover:border-white/40"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-primary/20 dark:border-primary/30 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40 dark:hover:border-primary/50"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",
@@ -397,14 +396,14 @@ const Contact: React.FC = () => {
                           transition={{ duration: 0.2 }}
                         >
                           <FiMessageSquare className="w-5 h-5" />
-                        </motion.div>
+                        </motion.div>{" "}
                         <motion.input
                           {...register("subject", {
                             required: "Subject is required",
                           })}
                           type="text"
                           placeholder="Subject"
-                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/60 dark:hover:border-white/40"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-primary/20 dark:border-primary/30 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground hover:border-primary/40 dark:hover:border-primary/50"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",
@@ -432,14 +431,14 @@ const Contact: React.FC = () => {
                           transition={{ duration: 0.2 }}
                         >
                           <FiMail className="w-5 h-5" />
-                        </motion.div>
+                        </motion.div>{" "}
                         <motion.textarea
                           {...register("message", {
                             required: "Message is required",
                           })}
                           placeholder="Your message..."
                           rows={5}
-                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-border dark:border-white/20 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none hover:border-primary/60 dark:hover:border-white/40"
+                          className="w-full pl-12 pr-4 py-3 bg-background border-2 border-primary/20 dark:border-primary/30 rounded-xl focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none hover:border-primary/40 dark:hover:border-primary/50"
                           whileFocus={{
                             scale: 1.02,
                             borderColor: "hsl(var(--primary))",

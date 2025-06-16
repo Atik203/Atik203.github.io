@@ -134,7 +134,7 @@ const Skills: React.FC = () => {
   ];
   const SkillBar: React.FC<{ skill: Skill }> = ({ skill }) => (
     <motion.div
-      className="skill-bar w-full mx-auto mb-6 p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
+      className="skill-bar w-full mx-auto mb-6 p-4 rounded-xl border-2 border-primary/20 dark:border-primary/30 hover:border-primary/40 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 dark:bg-card/50 backdrop-blur-sm dark:shadow-lg dark:shadow-primary/5"
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -150,9 +150,9 @@ const Skills: React.FC = () => {
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-foreground font-semibold text-lg">
               {skill.name}
-            </h3>
+            </h3>{" "}
             <motion.span
-              className="text-sm text-primary font-bold bg-primary/10 px-3 py-1 rounded-full"
+              className="text-sm text-primary font-bold bg-primary/10 dark:bg-primary/20 border-2 border-primary/30 dark:border-primary/40 px-3 py-1 rounded-full backdrop-blur-sm"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.3, type: "spring" }}
@@ -195,7 +195,10 @@ const Skills: React.FC = () => {
     { name: "Jenkins", icon: "jenkins" },
   ];
   return (
-    <section id="skill" className="py-24">
+    <section
+      id="skill"
+      className="py-24 border-b border-border/20 dark:border-border/40"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -242,7 +245,7 @@ const Skills: React.FC = () => {
                   {frontendTechs.map((tech, index) => (
                     <motion.div
                       key={index}
-                      className="tech-icon flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 px-4 py-3 rounded-xl font-medium hover:scale-110 transition-transform cursor-pointer"
+                      className="tech-icon flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-500/30 dark:border-blue-500/40 text-blue-600 dark:text-blue-400 px-4 py-3 rounded-xl font-medium hover:scale-110 transition-all duration-300 cursor-pointer backdrop-blur-sm hover:border-blue-500/50 dark:hover:border-blue-500/60"
                       whileHover={{ y: -5 }}
                       transition={{
                         type: "spring",
@@ -281,7 +284,7 @@ const Skills: React.FC = () => {
                   {backendTechs.map((tech, index) => (
                     <motion.div
                       key={index}
-                      className="tech-icon flex items-center gap-2 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 text-green-600 dark:text-green-400 px-4 py-3 rounded-xl font-medium hover:scale-110 transition-transform cursor-pointer"
+                      className="tech-icon flex items-center gap-2 bg-gradient-to-r from-green-500/10 to-emerald-500/10 dark:from-green-500/20 dark:to-emerald-500/20 border border-green-500/30 dark:border-green-500/40 text-green-600 dark:text-green-400 px-4 py-3 rounded-xl font-medium hover:scale-110 transition-all duration-300 cursor-pointer backdrop-blur-sm hover:border-green-500/50 dark:hover:border-green-500/60"
                       whileHover={{ y: -5 }}
                       transition={{
                         type: "spring",
@@ -319,7 +322,7 @@ const Skills: React.FC = () => {
                   {toolsList.map((tool, index) => (
                     <motion.div
                       key={index}
-                      className="tech-icon flex items-center gap-2 bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 px-4 py-3 rounded-xl font-medium hover:scale-110 transition-transform cursor-pointer"
+                      className="tech-icon flex items-center gap-2 bg-gradient-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/20 border border-orange-500/30 dark:border-orange-500/40 text-orange-600 dark:text-orange-400 px-4 py-3 rounded-xl font-medium hover:scale-110 transition-all duration-300 cursor-pointer backdrop-blur-sm hover:border-orange-500/50 dark:hover:border-orange-500/60"
                       whileHover={{ y: -5 }}
                       transition={{
                         type: "spring",
@@ -384,7 +387,7 @@ const Skills: React.FC = () => {
                 ].map((tech, index) => (
                   <motion.div
                     key={index}
-                    className="tech-icon group relative flex flex-col items-center p-3 rounded-xl hover:bg-accent/80 transition-all duration-300 cursor-pointer"
+                    className="tech-icon group relative flex flex-col items-center p-3 rounded-xl hover:bg-accent/80 dark:hover:bg-accent/60 border-2 border-primary/15 dark:border-primary/20 hover:border-primary/30 dark:hover:border-primary/40 transition-all duration-300 cursor-pointer backdrop-blur-sm"
                     whileHover={{ y: -8, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
