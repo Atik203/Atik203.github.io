@@ -1,41 +1,237 @@
-.glitch-text {
-  font-size: 40px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #fff;
+/* Advanced Professional Loading Animation */
+.loading-spinner {
+  display: inline-block;
   position: relative;
-  animation: glitch 2s infinite;
+  width: 120px;
+  height: 120px;
+}
+.loading-spinner div {
+  position: absolute;
+  border-radius: 50%;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+} /* Outer rotating ring */
+.loading-spinner div:nth-child(1) {
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 4px solid transparent;
+  border-top: 4px solid hsl(var(--primary));
+  border-right: 4px solid hsl(var(--primary) / 0.3);
+  animation: spin-outer 0.8s linear infinite;
+} /* Middle pulsing circle */
+.loading-spinner div:nth-child(2) {
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--primary)),
+    hsl(var(--primary) / 0.6)
+  );
+  animation: pulse-middle 1.2s ease-in-out infinite alternate;
+} /* Inner oscillating dots */
+.loading-spinner div:nth-child(3) {
+  top: 45px;
+  left: 45px;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--primary));
+  animation: bounce-inner 0.6s ease-in-out infinite alternate;
+  box-shadow: 15px 0 0 hsl(var(--primary) / 0.7),
+    30px 0 0 hsl(var(--primary) / 0.4);
+} /* Center glowing core */
+.loading-spinner div:nth-child(4) {
+  top: 55px;
+  left: 55px;
+  width: 10px;
+  height: 10px;
+  background: hsl(var(--primary));
+  animation: glow-core 0.4s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px hsl(var(--primary) / 0.5),
+    0 0 20px hsl(var(--primary) / 0.3), 0 0 30px hsl(var(--primary) / 0.1);
+}
+@keyframes spin-outer {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-@keyframes glitch {
+@keyframes pulse-middle {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes bounce-inner {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.2);
+  }
+}
+
+@keyframes glow-core {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3),
+      0 0 20px hsl(var(--primary) / 0.2), 0 0 30px hsl(var(--primary) / 0.1);
+  }
+  100% {
+    transform: scale(1.3);
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.8),
+      0 0 25px hsl(var(--primary) / 0.6), 0 0 35px hsl(var(--primary) / 0.4);
+  }
+}
+
+/* Additional floating particles animation */
+.loading-particles {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.loading-particles::before,
+.loading-particles::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 50%;
+  animation: float-particles 2s ease-in-out infinite;
+}
+
+.loading-particles::before {
+  top: 20px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.loading-particles::after {
+  bottom: 20px;
+  right: 20px;
+  animation-delay: 1s;
+}
+
+@keyframes float-particles {
   0%,
   100% {
-    text-shadow: 0 0 0 transparent;
-    /* transform: scale(1); */
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
   }
-  15% {
-    text-shadow: 1px 1px 0 #f00, -1px -1px 0 #0f0;
-    /* transform: skewX(-10deg); */
+  50% {
+    transform: translateY(-20px) scale(1.5);
+    opacity: 1;
   }
-  30% {
-    text-shadow: -1px -1px 0 #00f, 1px 1px 0 #ff0;
-    /* transform: skewX(10deg); */
+}
+
+/* Text shimmer effect */
+.loading-text {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--foreground)) 25%,
+    hsl(var(--primary)) 50%,
+    hsl(var(--foreground)) 75%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-text 1.5s ease-in-out infinite;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes shimmer-text {
+  0% {
+    background-position: 200% 0;
   }
-  45% {
-    text-shadow: 1px -1px 0 #0ff, -1px 1px 0 #f0f;
-    /* transform: skewY(-10deg); */
+  100% {
+    background-position: -200% 0;
   }
-  60% {
-    text-shadow: -1px 1px 0 #f00, 1px -1px 0 #0f0;
-    /* transform: skewY(10deg); */
+}
+
+/* Fade in animation for text */
+.animate-fade-in {
+  animation: fade-in 2s ease-in-out infinite alternate;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.4;
   }
-  75% {
-    text-shadow: 2px 2px 0 #ff0, -2px -2px 0 #00f;
-    /* transform: rotate(5deg); */
+  100% {
+    opacity: 1;
   }
-  90% {
-    text-shadow: -2px -2px 0 #0f0, 2px 2px 0 #f00;
-    /* transform: rotate(-5deg); */
+}
+
+/* Enhanced pulse animation with stagger */
+.animate-pulse-stagger {
+  animation: pulse-stagger 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-stagger {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Orbital dots animation */
+.loading-orbital {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.loading-orbital::before,
+.loading-orbital::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: hsl(var(--primary) / 0.8);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 -80px;
+  animation: orbit 2.5s linear infinite;
+}
+
+.loading-orbital::after {
+  animation-delay: 1.25s;
+  background: hsl(var(--primary) / 0.5);
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translate(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(80px) rotate(-360deg);
   }
 }

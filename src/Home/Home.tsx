@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      await new Promise<void>((resolve) => setTimeout(resolve, 3000));
+      await new Promise<void>((resolve) => setTimeout(resolve, 2500));
       setIsLoading(false);
     };
 
