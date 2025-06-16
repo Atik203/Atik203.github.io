@@ -68,14 +68,13 @@ const Footer: React.FC = () => {
       hoverColor: "hover:from-blue-400 hover:to-blue-600",
     },
   ];
-
   const techStack = [
     { name: "React", icon: FaReact, color: "text-blue-400" },
     { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
     { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
     { name: "Node.js", icon: FaNodeJs, color: "text-green-500" },
     { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400" },
-    { name: "MongoDB", icon: SiMongodb, color: "text-green-400" },
+    { name: "PostgreSQL", icon: SiMongodb, color: "text-blue-400" }, // Using MongoDB icon for PostgreSQL
   ];
 
   const contactInfo = [

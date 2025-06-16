@@ -100,37 +100,47 @@ const Skills: React.FC = () => {
       category: "frontend",
       icon: "tailwind",
     },
-    { id: 4, name: "TypeScript", level: 80, category: "frontend", icon: "ts" },
-    { id: 5, name: "Redux", level: 70, category: "frontend", icon: "redux" },
-    { id: 6, name: "Next.js", level: 50, category: "frontend", icon: "nextjs" },
+    { id: 4, name: "TypeScript", level: 85, category: "frontend", icon: "ts" },
+    { id: 5, name: "Redux", level: 75, category: "frontend", icon: "redux" },
+    { id: 6, name: "Next.js", level: 80, category: "frontend", icon: "nextjs" },
   ];
 
   const backendSkills: Skill[] = [
-    { id: 7, name: "Node.js", level: 80, category: "backend", icon: "nodejs" },
+    { id: 7, name: "Node.js", level: 85, category: "backend", icon: "nodejs" },
     {
       id: 8,
       name: "Express.js",
-      level: 85,
+      level: 90,
       category: "backend",
       icon: "express",
     },
     { id: 9, name: "MongoDB", level: 85, category: "backend", icon: "mongodb" },
     {
       id: 10,
+      name: "PostgreSQL",
+      level: 80,
+      category: "backend",
+      icon: "postgresql",
+    },
+    { id: 11, name: "Prisma", level: 75, category: "backend", icon: "prisma" },
+    {
+      id: 12,
       name: "Firebase",
-      level: 75,
+      level: 70,
       category: "backend",
       icon: "firebase",
     },
-    { id: 11, name: "MySQL", level: 70, category: "backend", icon: "mysql" },
+    { id: 13, name: "Django", level: 70, category: "backend", icon: "django" },
+    { id: 14, name: "Python", level: 75, category: "backend", icon: "python" },
   ];
 
   const tools: Skill[] = [
-    { id: 12, name: "Git", level: 90, category: "tools", icon: "git" },
-    { id: 13, name: "GitHub", level: 95, category: "tools", icon: "github" },
-    { id: 14, name: "VS Code", level: 95, category: "tools", icon: "vscode" },
-    { id: 15, name: "Figma", level: 75, category: "tools", icon: "figma" },
-    { id: 16, name: "Postman", level: 80, category: "tools", icon: "postman" },
+    { id: 15, name: "Git", level: 95, category: "tools", icon: "git" },
+    { id: 16, name: "GitHub", level: 95, category: "tools", icon: "github" },
+    { id: 17, name: "VS Code", level: 95, category: "tools", icon: "vscode" },
+    { id: 18, name: "Docker", level: 70, category: "tools", icon: "docker" },
+    { id: 19, name: "AWS", level: 65, category: "tools", icon: "aws" },
+    { id: 20, name: "Postman", level: 85, category: "tools", icon: "postman" },
   ];
   const SkillBar: React.FC<{ skill: Skill }> = ({ skill }) => (
     <motion.div
@@ -171,28 +181,27 @@ const Skills: React.FC = () => {
   const frontendTechs = [
     { name: "HTML5", icon: "html" },
     { name: "CSS3", icon: "css" },
-    { name: "Bootstrap", icon: "bootstrap" },
+    { name: "shadcn/ui", icon: "react" }, // Using React icon for shadcn/ui
     { name: "Material UI", icon: "materialui" },
-    { name: "Sass", icon: "sass" },
-    { name: "Vue.js", icon: "vue" },
+    { name: "Framer Motion", icon: "js" }, // Using JS icon for Framer Motion
   ];
 
   const backendTechs = [
-    { name: "Python", icon: "python" },
-    { name: "Java", icon: "java" },
-    { name: "PHP", icon: "php" },
-    { name: "Laravel", icon: "laravel" },
+    { name: "Django REST", icon: "django" },
+    { name: "Prisma ORM", icon: "prisma" },
     { name: "PostgreSQL", icon: "postgresql" },
-    { name: "Redis", icon: "redis" },
+    { name: "SQLite", icon: "sqlite" },
+    { name: "REST APIs", icon: "postman" },
+    { name: "Vercel", icon: "vercel" },
   ];
 
   const toolsList = [
     { name: "Docker", icon: "docker" },
-    { name: "Kubernetes", icon: "kubernetes" },
     { name: "AWS", icon: "aws" },
     { name: "Linux", icon: "linux" },
-    { name: "Nginx", icon: "nginx" },
-    { name: "Jenkins", icon: "jenkins" },
+    { name: "Vercel", icon: "vercel" },
+    { name: "Netlify", icon: "netlify" },
+    { name: "Figma", icon: "figma" },
   ];
   return (
     <section
@@ -348,7 +357,7 @@ const Skills: React.FC = () => {
                 <span className="w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></span>
                 All Technologies I Work With
                 <span className="w-12 h-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"></span>
-              </h3>
+              </h3>{" "}
               <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4 justify-items-center">
                 {[
                   "html",
@@ -357,22 +366,17 @@ const Skills: React.FC = () => {
                   "ts",
                   "react",
                   "nextjs",
-                  "vue",
-                  "angular",
                   "nodejs",
                   "express",
                   "mongodb",
-                  "mysql",
                   "postgresql",
+                  "prisma",
                   "firebase",
                   "python",
-                  "java",
-                  "php",
-                  "cpp",
+                  "django",
                   "git",
                   "github",
                   "docker",
-                  "kubernetes",
                   "aws",
                   "vercel",
                   "netlify",
@@ -380,10 +384,10 @@ const Skills: React.FC = () => {
                   "vscode",
                   "postman",
                   "tailwind",
-                  "bootstrap",
                   "materialui",
                   "redux",
-                  "sass",
+                  "sqlite",
+                  "linux",
                 ].map((tech, index) => (
                   <motion.div
                     key={index}
