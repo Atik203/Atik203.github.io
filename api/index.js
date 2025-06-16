@@ -26,8 +26,7 @@ const emailRateLimit = rateLimit({
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:5173',
-  'http://localhost:5174',
-  'https://your-portfolio-domain.vercel.app', // Replace with your actual Vercel domain
+  'https://www.atikurrahaman.live', 
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
