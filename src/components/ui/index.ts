@@ -8,14 +8,26 @@ export {
   CardTitle,
 } from "./card";
 export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from "./dialog";
+export {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
   NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "./navigation-menu";
 export {
   Pagination,
@@ -27,4 +39,5 @@ export {
   PaginationPrevious,
 } from "./pagination";
 export { Progress } from "./progress";
+export { ScrollArea, ScrollBar } from "./scroll-area";
 export { Separator } from "./separator";

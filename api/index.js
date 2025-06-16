@@ -185,6 +185,163 @@ Time: ${new Date().toLocaleString()}
   }
 });
 
+// Newsletter subscription endpoint
+app.post('/api/newsletter/subscribe', emailRateLimit, async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Validation
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        error: 'Email address is required'
+      });
+    }
+
+    if (!isValidEmail(email)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Please provide a valid email address'
+      });
+    }
+
+    // Create transporter
+    const transporter = createTransporter();
+
+    // Verify connection
+    await transporter.verify();
+
+    // Send welcome email to subscriber
+    const welcomeMailOptions = {
+      from: {
+        name: 'Md. Atikur Rahaman',
+        address: process.env.GMAIL_USER
+      },
+      to: email,
+      subject: '🎉 Welcome to My Newsletter!',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; padding: 20px; border-radius: 10px;">
+          <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+            <h1 style="margin: 0; font-size: 28px;">🎉 Welcome!</h1>
+            <p style="margin: 15px 0 0 0; font-size: 18px; opacity: 0.9;">Thank you for subscribing to my newsletter!</p>
+          </div>
+          
+          <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h2 style="color: #1f2937; margin: 0 0 20px 0;">Hi there! 👋</h2>
+            
+            <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+              I'm <strong>Md. Atikur Rahaman</strong>, a passionate Full Stack Developer with 2+ years of experience 
+              crafting exceptional web applications.
+            </p>
+            
+            <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+              <h3 style="color: #1e40af; margin: 0 0 10px 0;">What to expect:</h3>
+              <ul style="color: #374151; margin: 10px 0; padding-left: 20px;">
+                <li>🚀 Latest project updates and tech insights</li>
+                <li>💡 Web development tips and best practices</li>
+                <li>🔧 New tools and technologies I'm exploring</li>
+                <li>📊 Behind-the-scenes development stories</li>
+              </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="https://your-portfolio-domain.com" 
+                 style="display: inline-block; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                🌐 Visit My Portfolio
+              </a>
+            </div>
+            
+            <div style="background: #fef3c7; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 20px 0;">
+              <p style="margin: 0; color: #92400e; font-size: 14px;">
+                <strong>📧 Stay Connected:</strong> Feel free to reply to this email anytime - I'd love to hear from you!
+              </p>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px; color: #6b7280; font-size: 12px;">
+            <p>You're receiving this because you subscribed to my newsletter.</p>
+            <p>If you didn't subscribe, please ignore this email.</p>
+            <p style="margin-top: 10px;">
+              <a href="#" style="color: #6b7280; text-decoration: underline;">Unsubscribe</a> | 
+              <a href="mailto:atikurrahaman0305@gmail.com" style="color: #6b7280; text-decoration: underline;">Contact Me</a>
+            </p>
+          </div>
+        </div>
+      `,
+      text: `
+🎉 Welcome to My Newsletter!
+
+Hi there! 👋
+
+Thank you for subscribing to my newsletter! I'm Md. Atikur Rahaman, a passionate Full Stack Developer with 2+ years of experience crafting exceptional web applications.
+
+What to expect:
+• Latest project updates and tech insights
+• Web development tips and best practices  
+• New tools and technologies I'm exploring
+• Behind-the-scenes development stories
+
+Visit my portfolio: https://your-portfolio-domain.com
+
+Stay connected - feel free to reply to this email anytime!
+
+---
+You're receiving this because you subscribed to my newsletter.
+If you didn't subscribe, please ignore this email.
+      `
+    };
+
+    // Send notification email to yourself
+    const notificationMailOptions = {
+      from: {
+        name: 'Portfolio Newsletter',
+        address: process.env.GMAIL_USER
+      },
+      to: process.env.GMAIL_USER,
+      subject: '📧 New Newsletter Subscription',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; padding: 20px; border-radius: 10px;">
+          <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+            <h1 style="margin: 0; font-size: 24px;">📧 New Subscriber!</h1>
+          </div>
+          
+          <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <p style="margin: 0; font-size: 16px; color: #374151;">
+              <strong>Email:</strong> ${email}
+            </p>
+            <p style="margin: 10px 0 0 0; font-size: 14px; color: #6b7280;">
+              Subscribed at: ${new Date().toLocaleString()}
+            </p>
+          </div>
+        </div>
+      `
+    };
+
+    // Send both emails
+    await Promise.all([
+      transporter.sendMail(welcomeMailOptions),
+      transporter.sendMail(notificationMailOptions)
+    ]);
+
+    console.log('Newsletter subscription successful for:', email);
+
+    res.status(200).json({
+      success: true,
+      message: 'Successfully subscribed to newsletter! Check your email for confirmation.',
+      email: email
+    });
+
+  } catch (error) {
+    console.error('Newsletter subscription error:', error);
+    
+    res.status(500).json({
+      success: false,
+      error: 'Failed to subscribe to newsletter. Please try again later.',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
