@@ -32,7 +32,9 @@ interface Project {
   liveUrl?: string;
   image: string;
   language: string;
-  category: "Frontend" | "Backend" | "Full Stack";
+  category: "Frontend" | "Backend" | "Full Stack" | "Desktop";
+  // Optional extra repo (e.g., separate frontend + backend)
+  frontendGithubUrl?: string;
 }
 
 const Project: React.FC = () => {
@@ -74,6 +76,7 @@ const Project: React.FC = () => {
   }, [currentPage]);
 
   const projects: Project[] = [
+    // 1. ContestHub
     {
       id: 1,
       title: "ContestHub",
@@ -90,13 +93,55 @@ const Project: React.FC = () => {
       ],
       githubUrl: "https://github.com/Atik203/ContestHub-Client-Side",
       liveUrl: "https://contesthub.surge.sh",
-      image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center",
+      image: "/contest-hub.png",
       language: "JavaScript",
       category: "Full Stack",
     },
+    // 2. Campers Shop
     {
       id: 2,
+      title: "Campers Shop",
+      description: "E-commerce Camping Store",
+      longDescription:
+        "The Campers Shop Frontend is a React-based web application that serves as the user interface for the Campers Shop. It enables users to browse through a wide range of camping products.",
+      technologies: [
+        "TypeScript",
+        "React",
+        "Redux",
+        "Tailwind CSS",
+        "React Router",
+      ],
+      githubUrl: "https://github.com/Atik203/Campers-Shop-Frontend",
+      liveUrl: "https://campers-shop-frontend-lac.vercel.app",
+      image: "/campers-shop.png",
+      language: "TypeScript",
+      category: "Frontend",
+    },
+    // 3. ScholarFlow
+    {
+      id: 3,
+      title: "ScholarFlow",
+      description: "AI Research Collaboration Hub (Early Stage)",
+      longDescription:
+        "Monorepo (Next.js + Express + Prisma + pgvector) for ingesting papers, semantic search, AI summaries, collections & future annotations. Early MVP with progressive feature flags.",
+      technologies: [
+        "Next.js",
+        "Express",
+        "Prisma",
+        "Postgres",
+        "pgvector",
+        "Tailwind",
+        "Zod",
+        "OpenAI",
+      ],
+      githubUrl: "https://github.com/Atik203/Scholar-Flow",
+      image: "/scholar-flow.png",
+      language: "TypeScript",
+      category: "Full Stack",
+    },
+    // 4. RestoControl
+    {
+      id: 4,
       title: "RestoControl",
       description: "Restaurant Management System",
       longDescription:
@@ -111,34 +156,13 @@ const Project: React.FC = () => {
       ],
       githubUrl: "https://github.com/Atik203/Restaurant-Management-Client-Side",
       liveUrl: "https://restocontrol.surge.sh",
-      image:
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop&crop=center",
+      image: "/restro-control.png",
       language: "JavaScript",
       category: "Full Stack",
     },
+    // 5. Book Donate Platform
     {
-      id: 3,
-      title: "University Management Backend",
-      description: "University Management System API",
-      longDescription:
-        "This is University Management project backend using TypeScript, Node.js, Express.js, MongoDB, Mongoose, Zod and JWT with comprehensive student and faculty management.",
-      technologies: [
-        "TypeScript",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Mongoose",
-        "Zod",
-        "JWT",
-      ],
-      githubUrl: "https://github.com/Atik203/University-Management-Backend",
-      image:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop&crop=center",
-      language: "TypeScript",
-      category: "Backend",
-    },
-    {
-      id: 4,
+      id: 5,
       title: "Book Donate Platform",
       description: "Virtual Coin Reward System",
       longDescription:
@@ -152,32 +176,59 @@ const Project: React.FC = () => {
         "Stripe",
       ],
       githubUrl: "https://github.com/Atik203/Book-Donate",
-      image:
-        "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop&crop=center",
+      image: "/book-donate.png",
       language: "TypeScript",
       category: "Full Stack",
     },
-    {
-      id: 5,
-      title: "Campers Shop Frontend",
-      description: "E-commerce Camping Store",
-      longDescription:
-        "The Campers Shop Frontend is a React-based web application that serves as the user interface for the Campers Shop. It enables users to browse through a wide range of camping products.",
-      technologies: [
-        "TypeScript",
-        "React",
-        "Redux",
-        "Tailwind CSS",
-        "React Router",
-      ],
-      githubUrl: "https://github.com/Atik203/Campers-Shop-Frontend",
-      image:
-        "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop&crop=center",
-      language: "TypeScript",
-      category: "Frontend",
-    },
+    // 6. U-eAdmission Online System
     {
       id: 6,
+      title: "U-eAdmission Online System",
+      description: "JavaFX University Admission Automation",
+      longDescription:
+        "Comprehensive JavaFX desktop system automating university admission: applications, MCQ exam with anti-cheat monitoring, real-time chat, results & merit list, and admin dashboards.",
+      technologies: [
+        "Java 21",
+        "JavaFX",
+        "MySQL",
+        "Maven",
+        "JUnit 5",
+        "MaterialFX",
+        "ControlsFX",
+        "AtlantaFX",
+      ],
+      githubUrl: "https://github.com/Atik203/U-eAdmission-Online-System",
+      image: "/ueadmission.png",
+      language: "Java",
+      category: "Desktop",
+    },
+    // 7. University Management System
+    {
+      id: 7,
+      title: "University Management System",
+      description: "University Management System",
+      longDescription:
+        "This is University Management project backend using TypeScript, Node.js, Express.js, MongoDB, Mongoose, Zod and JWT with comprehensive student and faculty management.",
+      technologies: [
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "Zod",
+        "JWT",
+      ],
+      githubUrl: "https://github.com/Atik203/University-Management-Backend",
+      frontendGithubUrl:
+        "https://github.com/Atik203/University-Management-Frontend",
+      image:
+        "https://plus.unsplash.com/premium_photo-1681248156502-745ab87474d8?q=80&crop=center&w=600&h=400",
+      language: "TypeScript",
+      category: "Backend",
+    },
+    // 8. Library Management System
+    {
+      id: 8,
       title: "Library Management System",
       description: "Django-based Library System",
       longDescription:
@@ -241,6 +292,7 @@ const Project: React.FC = () => {
       Frontend: "bg-gradient-to-r from-purple-500 to-pink-500",
       Backend: "bg-gradient-to-r from-green-500 to-teal-500",
       "Full Stack": "bg-gradient-to-r from-blue-500 to-indigo-500",
+      Desktop: "bg-gradient-to-r from-orange-500 to-amber-500",
     };
     return (
       colors[category as keyof typeof colors] ||
@@ -264,8 +316,7 @@ const Project: React.FC = () => {
               Featured Projects
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Showcasing my journey through 10+ client projects and personal
-              developments
+              Showcasing my journey through projects and personal developments
             </p>
           </motion.div>{" "}
           {/* Projects Grid */}
@@ -431,37 +482,38 @@ const Project: React.FC = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-3 pt-4">
-                      <Button
-                        variant="default"
-                        size="sm"
-                        asChild
-                        className="flex-1"
-                      >
+                    <div className="flex items-center gap-3 pt-4 flex-wrap">
+                      {/* Primary GitHub (often backend or single repo) */}
+                      <Button variant="default" size="sm" asChild>
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <FaGithub className="w-4 h-4" />
-                          Code
+                          {project.frontendGithubUrl ? "Backend" : "Code"}
                         </a>
                       </Button>
-
+                      {/* Optional Frontend Repo */}
+                      {project.frontendGithubUrl && (
+                        <Button variant="secondary" size="sm" asChild>
+                          <a
+                            href={project.frontendGithubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FaGithub className="w-4 h-4" /> Frontend
+                          </a>
+                        </Button>
+                      )}
                       {project.liveUrl && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="flex-1"
-                        >
+                        <Button variant="outline" size="sm" asChild>
                           <a
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <FaExternalLinkAlt className="w-4 h-4" />
-                            Live Demo
+                            <FaExternalLinkAlt className="w-4 h-4" /> Live Demo
                           </a>
                         </Button>
                       )}
